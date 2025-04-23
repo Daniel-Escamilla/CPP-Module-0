@@ -2,13 +2,12 @@ NAME = PhoneBook
 CC = g++
 CFLAGS = -g3 -Wall -Wextra -Werror -std=c++98
 
-SRC = \
-    src/main.cpp \
-    src/PhoneBook.cpp \
-    src/Contact.cpp \
-    src/Add.cpp \
-    src/Search.cpp \
-    src/Exit.cpp \
+SRC =	src/main.cpp \
+		src/PhoneBook.cpp \
+		src/Contact.cpp \
+		src/Add.cpp \
+		src/Search.cpp \
+		src/Exit.cpp \
 
 
 OBJS = $(notdir $(SRC:.cpp=.o))
