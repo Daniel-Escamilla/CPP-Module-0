@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   PhoneBook.hpp                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: descamil <descamil@student.42.fr>          +#+  +:+       +#+        */
+/*   By: daniel-escamilla <daniel-escamilla@stud    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/21 19:01:23 by descamil          #+#    #+#             */
-/*   Updated: 2025/04/23 11:42:49 by descamil         ###   ########.fr       */
+/*   Updated: 2025/04/23 21:48:12 by daniel-esca      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,11 @@ class	Contact
 	public:
 		Contact() {};
 		~Contact() {};
+		std::string	getFirstName() const { return _FirstName; }
+		std::string	getSecondName() const { return _SecondName; }
+		std::string	getNickname() const { return _Nickname; }
+		std::string	getPhoneNumber() const { return _PhoneNumber; }
+		std::string	getSecret() const { return _Secret; }
 		void	fillContact();
 		
 };
@@ -35,12 +40,20 @@ class	PhoneBook
 	private:
 		int			_index;
 		Contact		_contacts[8];
-	public:
-		PhoneBook() {};
-		~PhoneBook() {};
+		bool		_running;
 		void		AddContact();
-		// void		SearchContact(std::string search_contact);
-};
+		void		Exit();
+		void		SearchByName();
 
+	public:
+		PhoneBook() : _index(0), _running(true){}
+		~PhoneBook() {};
+		typedef void(PhoneBook::*Pointer)();
+		
+		void		printContact(int i);
+		void		createPhoneBook();
+		static const std::string FunctionNames[3];
+		static Pointer	Functions[3];
+};
 
 #endif
