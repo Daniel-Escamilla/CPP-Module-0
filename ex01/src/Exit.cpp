@@ -3,11 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   Exit.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: descamil <descamil@student.42.fr>          +#+  +:+       +#+        */
+/*   By: daniel-escamilla <daniel-escamilla@stud    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/21 19:01:33 by descamil          #+#    #+#             */
-/*   Updated: 2025/04/21 19:20:14 by descamil         ###   ########.fr       */
+/*   Updated: 2025/04/23 21:36:37 by daniel-esca      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/PhoneBook.hpp"
+
+void	PhoneBook::Exit()
+{
+	_running = false;
+}
