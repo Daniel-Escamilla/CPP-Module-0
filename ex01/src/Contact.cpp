@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Contact.cpp                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: descamil <descamil@student.42.fr>          +#+  +:+       +#+        */
+/*   By: daniel-escamilla <daniel-escamilla@stud    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/21 19:01:29 by descamil          #+#    #+#             */
-/*   Updated: 2025/04/23 12:10:37 by descamil         ###   ########.fr       */
+/*   Updated: 2025/04/23 13:24:12 by daniel-esca      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,10 +15,9 @@
 std::string	getInput(std::string prompt)
 {
 	std::string input = "";
-	std::cout << prompt;
 	while(input.empty())
 	{
-		std::cout << "\r" + prompt;
+		std::cout << prompt;
 		std::getline(std::cin, input);
 	}
 	return (input);
@@ -27,4 +26,8 @@ std::string	getInput(std::string prompt)
 void	Contact::fillContact()
 {
 	_FirstName = getInput("First Name: ");
+	_SecondName = getInput("Second Name: ");
+	_Nickname = getInput("Nickname: ");
+	_PhoneNumber = getInput("Phone Number: ");
+	_Secret = getInput("Dark Secret: ");
 }
