@@ -3,16 +3,23 @@
 /*                                                        :::      ::::::::   */
 /*   Search.cpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: daniel-escamilla <daniel-escamilla@stud    +#+  +:+       +#+        */
+/*   By: descamil <descamil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/21 19:01:48 by descamil          #+#    #+#             */
-/*   Updated: 2025/04/23 21:56:27 by daniel-esca      ###   ########.fr       */
+/*   Updated: 2025/04/24 09:42:35 by descamil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/PhoneBook.hpp"
 
-std::string formatField(const std::string& str)
+bool stringToInt(const std::string &input, int &result)
+{
+	std::istringstream iss(input);
+	iss >> result;
+	return (!iss.fail() && iss.eof());
+}
+
+std::string	formatField(const std::string& str)
 {
 	if (str.length() > 10)
 		return str.substr(0, 9) + ".";
@@ -29,18 +36,45 @@ void	PhoneBook::printContact(int i)
 	<< formatField(contact.getNickname()) << std::endl;
 }
 
-void	PhoneBook::SearchByName()
+int	getNumber()
 {
 	int index;
-	std::cout << "Enter index: ";
-	std::cin >> index;
+
+	stringToInt(getInput("Enter index: "), index);
+	if (index > 0 && index < 8)
+		return (index);
+	std::cerr << "Invalid index: " << std::endl;
+	return (-1);
+}
+
+bool	PhoneBook::printTable()
+{
+	bool empty = true;
+
 	for (int i = 0; i < 8; i++)
 	{
-		if (!(_contacts[index].getFirstName().empty()))
-		{
-			printContact(i);
-			return;
-		}
+		if (_contacts[i].getFirstName().empty())
+			continue ;
+		printContact(i);
+		empty = false;
 	}
-	std::cout << "Contact not found.\n";
+	return (empty);
+}
+
+void	PhoneBook::SearchByName()
+{
+	int	index;
+	
+	if (printTable())
+	{
+		std::cerr << "The list is empty" << std::endl;
+		return ;
+	}
+	index = getNumber();
+	if (index == -1)
+		return ;
+	if (_contacts[index].getFirstName().empty())
+		std::cout << "Contact not found." << std::endl;
+	else
+		printContact(index);
 }
