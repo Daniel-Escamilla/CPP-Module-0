@@ -6,7 +6,7 @@
 /*   By: descamil <descamil@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/21 19:01:23 by descamil          #+#    #+#             */
-/*   Updated: 2025/04/24 07:55:22 by descamil         ###   ########.fr       */
+/*   Updated: 2025/04/24 08:41:25 by descamil         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,6 +51,7 @@ class	PhoneBook
 		PhoneBook() : _index(0), _running(true){}
 		~PhoneBook() {};
 
+		bool		printTable();
 		void		createPhoneBook();
 		void		printContact(int i);
 
@@ -58,5 +59,7 @@ class	PhoneBook
 		static Pointer	Functions[3];
 		static const std::string FunctionNames[3];
 };
+
+std::string	getInput(std::string prompt);
 
 #endif
